@@ -1,0 +1,24 @@
+/bug-tracker/node_modules
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/bug-tracker/node_modules
+/bug-tracker/.pnp
+bug-tracker/.pnp.js
+
+# testing
+/bug-tracker/coverage
+
+# production
+/bug-tracker/build
+
+# misc
+bug-tracker/.DS_Store
+bug-tracker/.env.local
+bug-tracker/.env.development.local
+bug-tracker/.env.test.local
+bug-tracker/.env.production.local
+
+bug-tracker/npm-debug.log*
+bug-tracker/yarn-debug.log*
+bug-tracker/yarn-error.log*
