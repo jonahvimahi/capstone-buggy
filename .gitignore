@@ -1,5 +1,6 @@
 /front-end-bug-tracker/node_modules
 /back-end/node_modules
+/back-end/.env
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
