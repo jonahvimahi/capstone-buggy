@@ -1,0 +1,23 @@
+.bug-card-view{
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+}
+.bug-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    background-color: gray;
+    box-shadow: 2px 2px 2px #05e6ee81;
+    border-radius: 8px;
+    margin: 10px;
+    width: 20vw;
+
+    /* min-width: 275px;
+    min-height: 200px; */
+}
+.bug-card:hover{
+    transition: all 0.2s;
+    transform: scale(1.05); 
+}

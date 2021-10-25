@@ -1,0 +1,43 @@
+.bug-create{
+    /* position:absolute; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 70vw;
+    height: 70vh;
+    background-color: gray;
+    border-radius: 8px;
+    border: 1px #05e6ee;
+}
+.bug-create h1{
+    min-width: 100%;
+    text-align: center;
+    font-size: 2.5rem;
+    border-bottom: 1px groove #05e6ee;
+    height: auto;
+}
+.bug-create form{
+    min-width: 80%;
+    display: grid;
+    grid-template-areas: 30% 70%;
+    column-gap: 20px;
+}
+.bug-create label{
+    text-align: left;
+    font-size: 1.5rem;
+}
+.bug-create input,textarea,select{
+    border-radius: 8px;
+    border: none;
+}
+.bug-create textarea{
+    display: flex;
+    align-items: center;
+}
+.bug-view{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 18vw;
+}

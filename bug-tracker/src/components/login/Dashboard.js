@@ -3,8 +3,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useHistory } from "react-router";
 import "./Dashboard.css";
 import { auth, db, logout } from "../../firebase";
-import { Link } from "react-router-dom";
-function Dashboard() {
+import Sidebar from "../Sidebar/Sidebar";
+function Dashboard(props) {
 	const [user, loading] = useAuthState(auth);
 	const [name, setName] = useState("");
 	const history = useHistory();
@@ -28,21 +28,17 @@ function Dashboard() {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [user, loading]);
 	return (
-		<div className="dashboard">
+		<>
+			<Sidebar />
 			<div className="dashboard__container">
-				Logged in as
-				<div>{name}</div>
-				<div>{user?.email}</div>
+				<h1 className="title">Logged in as:</h1>
+				<h2>{name}</h2>
+				<h3>{user?.email}</h3>
 				<button className="dashboard__btn" onClick={logout}>
 					Logout
 				</button>
-				<Link to="/home">
-					<button className="dashboard__btn">
-						Home
-					</button>
-				</Link>
 			</div>
-		</div>
+		</>
 	);
 }
 export default Dashboard;

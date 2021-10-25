@@ -1,24 +1,25 @@
-/bug-tracker/node_modules
+/front-end-bug-tracker/node_modules
+/back-end/node_modules
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/bug-tracker/node_modules
-/bug-tracker/.pnp
-bug-tracker/.pnp.js
+/front-end-bug-tracker/node_modules
+/front-end-bug-tracker/.pnp
+front-end-bug-tracker/.pnp.js
 
 # testing
-/bug-tracker/coverage
+/front-end-bug-tracker/coverage
 
 # production
-/bug-tracker/build
+/front-end-bug-tracker/build
 
 # misc
-bug-tracker/.DS_Store
-bug-tracker/.env.local
-bug-tracker/.env.development.local
-bug-tracker/.env.test.local
-bug-tracker/.env.production.local
+front-end-bug-tracker/.DS_Store
+front-end-bug-tracker/.env.local
+front-end-bug-tracker/.env.development.local
+front-end-bug-tracker/.env.test.local
+front-end-bug-tracker/.env.production.local
 
-bug-tracker/npm-debug.log*
-bug-tracker/yarn-debug.log*
-bug-tracker/yarn-error.log*
+front-end-bug-tracker/npm-debug.log*
+front-end-bug-tracker/yarn-debug.log*
+front-end-bug-tracker/yarn-error.log*

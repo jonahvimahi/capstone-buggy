@@ -1,0 +1,25 @@
+.dash-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-radius: 8px;
+    background-color: gray;
+    margin-left: 18vw;
+    height: 20vh;
+    width: 20vw;
+}
+.dash-card:hover{
+    transition: all 0.2s;
+    transform: scale(1.05);
+}
+.dash-card h2{
+    width: 100%;
+    margin-top: 5px;
+    justify-content: center;
+    align-items: center;
+}
+.dash-card p{
+    font-size: 1.5rem;
+    margin: 20px;
+}

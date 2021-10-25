@@ -13,7 +13,7 @@ function Login() {
       // maybe trigger a loading screen
       return;
     }
-    if (user) history.replace("/dashboard");
+    if (user) history.replace("/home");
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, loading]);
   return (
