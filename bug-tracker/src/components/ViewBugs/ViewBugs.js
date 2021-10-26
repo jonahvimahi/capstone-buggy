@@ -1,6 +1,7 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBugs } from "../Controller/Redux/BugSlice";
+// import { getBugs } from "../Controller/Redux/BugSlice";
 import BugCard from "../Bug Card/BugCard";
 import BugView from "../Bug View/BugView";
 import Sidebar from "../Sidebar/Sidebar";
@@ -23,7 +24,9 @@ export default function ViewBugs() {
 			name: name,
 		});
 	}
-
+	function getBugs() {
+		axios.get("http://localhost:3500/viewbugs")
+	}
 	return (
 		<>
 			<Sidebar />

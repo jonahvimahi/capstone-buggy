@@ -1,15 +1,56 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./BugForm.css";
-import bugModel from "../Models/BugModel";
 import Sidebar from "../Sidebar/Sidebar";
 
 export default function BugForm(props) {
-	const [bugObject, setBugObject] = useState(new bugModel(props.bug));
+	const [bugObject, setBugObject] = useState({
+		name: "",
+		details: "",
+		steps: "",
+		version: "",
+		assigned: "",
+		creator: "",
+		priority: 0,
+		date: "",
+	});
+	function submit(e) {
+		e.preventDefault();
 
-	function inputChange(e) {
+		const formData = {
+			name: bugObject.name,
+			details: bugObject.details,
+			steps: bugObject.steps,
+			version: bugObject.version,
+			assigned: bugObject.assigned,
+			creator: bugObject.creator,
+			priority: bugObject.priority,
+			date: bugObject.date,
+		};
+		console.log(formData);
+		axios({
+			url: "http://localhost:3500/create",
+			method: "POST",
+			data: formData,
+		})
+			.then((res) => {
+				console.log("Data has been sent to the server");
+				resetInputs();
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}
+	function resetInputs() {
 		setBugObject({
-			...bugObject,
-			[e.target.name]: e.target.value,
+			name: "",
+			details: "",
+			steps: "",
+			version: "",
+			assigned: "",
+			creator: "",
+			priority: 0,
+			date: "",
 		});
 	}
 	return (
@@ -26,32 +67,48 @@ export default function BugForm(props) {
 					<form>
 						<label>Name:</label>
 						<input
-							type="text"
 							name="name"
 							placeholder="Bug Name"
 							required
-							onChange={inputChange}
+							onChange={(e) => {
+								setBugObject({ ...bugObject, name: e.target.value });
+							}}
 							value={bugObject.name}
 						/>
 						<label>Details:</label>
 						<textarea
 							name="details"
 							placeholder="Detailed description of bug"
-							onChange={(e) => setBugObject(e.target.value)}
+							onChange={(e) => {
+								setBugObject({ ...bugObject, details: e.target.value });
+							}}
 							value={bugObject.details}
 						></textarea>
 						<label>Steps:</label>
 						<textarea
-							name="details"
+							name="steps"
 							placeholder="Steps to recreate the bug"
-							onChange={(e) => setBugObject(e.target.value)}
+							onChange={(e) => {
+								setBugObject({ ...bugObject, steps: e.target.value });
+							}}
 							value={bugObject.steps}
 						></textarea>
+						<label>Application Version:</label>
+						<input
+							name="version"
+							placeholder="Application Version"
+							onChange={(e) => {
+								setBugObject({ ...bugObject, version: e.target.value });
+							}}
+							value={bugObject.version}
+						></input>
 						<label>Priority:</label>
 						<select
 							name="priority"
 							required
-							onChange={inputChange}
+							onChange={(e) => {
+								setBugObject({ ...bugObject, priority: e.target.value });
+							}}
 							value={bugObject.priority}
 						>
 							<option value="1">High</option>
@@ -59,28 +116,36 @@ export default function BugForm(props) {
 							<option value="3">Low</option>
 						</select>
 						<label>Assigned:</label>
-						<select
-							name="assigned"
-							onChange={inputChange}
-							value={bugObject.assigned}
-						>
-							<option>Jonah Vimahi</option>
-						</select>
-						<label>Application Version:</label>
 						<input
-							name="version"
-							placeholder="Application Version"
-							onChange={inputChange}
-							value={bugObject.version}
+							placeholder="Assigned"
+							name="assigned"
+							onChange={(e) => {
+								setBugObject({ ...bugObject, assigned: e.target.value });
+							}}
+							value={bugObject.assigned}
 						></input>
+						<label>Creator</label>
+						<input
+							placeholder="Who is reporting this bug?"
+							name="creator"
+							onChange={(e) => {
+								setBugObject({ ...bugObject, creator: e.target.value });
+							}}
+							value={bugObject.creator}
+						/>
 						<label>Date:</label>
 						<input
 							type="date"
 							className="bug-date"
 							placeholder="Bug Date"
+							onChange={(e) =>
+								setBugObject({ ...bugObject, date: e.target.value })
+							}
 							value={bugObject.date}
 						/>
-						<button type="submit">{props.title}</button>
+						<button type="submit" onClick={submit}>
+							Submit
+						</button>
 					</form>
 				</div>
 			</div>
