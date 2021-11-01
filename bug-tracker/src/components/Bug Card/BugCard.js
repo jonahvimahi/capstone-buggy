@@ -9,12 +9,10 @@ export default function BugCard(props) {
 		props.clicked(name);
 	}
 	return (
-			<div className="bug-card-view">
 				<div className="bug-card" onClick={Clicked}>
 					<h2 className="name">{name}</h2>
 					<h4 className="priority" style={{ color: color }}>{level}</h4>
 					<h5 className="version">{version}</h5>
 				</div>
-			</div>
 	);
 }

@@ -20,12 +20,14 @@ function Register() {
     }
     useEffect(() => {
         if (loading) return;
-        if (user) history.replace('/dashboard')
+        if (user) history.replace('/home')
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user, loading])
     return (
         <div className="register">
             <div className="register__container">
+            <h1 className="loginHeader">Register:</h1>
+
                 <input 
                 type="text" 
                 className="register__textBox" 

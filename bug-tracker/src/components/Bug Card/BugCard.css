@@ -1,9 +1,5 @@
-.bug-card-view{
-    display: flex;
-    flex-direction: column;
-    width: 20vw;
-}
 .bug-card{
+    flex-wrap: wrap;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -13,6 +9,7 @@
     border-radius: 8px;
     margin: 10px;
     width: 20vw;
+    height: 15vh;
 
     /* min-width: 275px;
     min-height: 200px; */

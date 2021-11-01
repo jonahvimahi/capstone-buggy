@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./BugForm.css";
 import Sidebar from "../Sidebar/Sidebar";
 
 export default function BugForm(props) {
+	const getBugs = props.getBugs
 	const [bugObject, setBugObject] = useState({
 		name: "",
 		details: "",
@@ -11,9 +12,27 @@ export default function BugForm(props) {
 		version: "",
 		assigned: "",
 		creator: "",
-		priority: 0,
+		priority: 1,
 		date: "",
 	});
+	useEffect(() => {
+		if (props.bug) {
+			setEditBug();
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+	function setEditBug() {
+		setBugObject({
+			name: props.bug.name,
+			details: props.bug.details,
+			steps: props.bug.steps,
+			version: props.bug.version,
+			assigned: props.bug.assigned,
+			creator: props.bug.creator,
+			priority: props.bug.priority,
+			date: props.bug.date,
+		});
+	}
 	function submit(e) {
 		e.preventDefault();
 
@@ -41,6 +60,31 @@ export default function BugForm(props) {
 				console.log(err);
 			});
 	}
+	function updateBug() {
+		console.log(props.bug);
+
+		const formData = {
+			name: bugObject.name,
+			details: bugObject.details,
+			steps: bugObject.steps,
+			version: bugObject.version,
+			assigned: bugObject.assigned,
+			creator: bugObject.creator,
+			priority: bugObject.priority,
+			date: bugObject.date,
+		};
+		console.log(formData);
+		axios
+			.put(`http://localhost:3500/viewbugs/?id=${props.bug._id}`, formData) // ({
+			.then((res) => {
+				console.log("Data has been sent to the server");
+				resetInputs();
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+			getBugs()
+	}
 	function resetInputs() {
 		setBugObject({
 			name: "",
@@ -59,13 +103,23 @@ export default function BugForm(props) {
 			<div className="bug-view">
 				<div className="bug-create">
 					{props.title === "Edit Bug" && (
-						<button className="close-button" onClick={props.close}>
-							Close
-						</button>
+						<>
+							<button className="close-button" onClick={props.close}>
+								Close
+							</button>
+							<button
+								className="update-button"
+								onClick={() => {
+									updateBug();
+								}}
+							>
+								Update
+							</button>
+							<h1>{props.title}</h1>
+						</>
 					)}
-					{props.title === "Edit Bug" && <h1>{props.title}</h1>}
 					<form>
-						<label>Name:</label>
+						<label>Title:</label>
 						<input
 							name="name"
 							placeholder="Bug Name"
@@ -143,9 +197,11 @@ export default function BugForm(props) {
 							}
 							value={bugObject.date}
 						/>
-						<button type="submit" onClick={submit}>
-							Submit
-						</button>
+						{props.title !== "Edit Bug" && (
+							<button type="submit" onClick={submit}>
+								Submit
+							</button>
+						)}
 					</form>
 				</div>
 			</div>

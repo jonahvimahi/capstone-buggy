@@ -1,3 +1,11 @@
+.dash-card-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 82vw;
+    flex-direction: column;
+}
+
 #nav{
     display: flex;
     flex-direction: row;
@@ -7,9 +15,4 @@
 #nav h1{
     font-size: 35px;
 }
-.navDiv{
-    width: 33%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+

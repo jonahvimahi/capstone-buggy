@@ -45,10 +45,11 @@ export default function Home() {
 	return (
 		<>
 			<Sidebar />
+            <div className="dash-card-container">
 			<DashCard priority='1' count={highCount.length} clicked={redirect}/>
         	<DashCard priority='2' count={midCount.length} clicked={redirect}/>
         	<DashCard priority='3' count={lowCount.length} clicked={redirect}/>
-
+            </div>
 		</>
 	);
 }

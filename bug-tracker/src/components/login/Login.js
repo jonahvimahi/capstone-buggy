@@ -19,6 +19,7 @@ function Login() {
   return (
     <div className="login">
       <div className="login__container">
+        <h1 className="loginHeader">Login:</h1>
         <input
           type="text"
           className="login__textBox"

@@ -24,4 +24,17 @@ route.post("/", async (req, res) => {
 	});
 });
 
+route.get("/viewbugs", (req, res) => {
+		bugModel
+			.find(req.body)
+			.then((bug) => {
+				if (!bug) return res.status(400).send("no bugs");
+				res.send(bug);
+			})
+			.catch((err) => {
+				if (err) res.status(400).send(err);
+			});
+	// 	res.status(200).send('nice')
+		});
+
 module.exports = route;

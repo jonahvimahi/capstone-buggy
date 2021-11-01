@@ -4,7 +4,6 @@ import { logout } from "../../firebase";
 import "./Sidebar.css";
 export default function Sidebar() {
 	return (
-		<div className="sidebarDiv">
 		<div className="sidebar">
 			<ul>
 			<h1 className="brand">Bug-Tracker</h1>
@@ -34,7 +33,6 @@ export default function Sidebar() {
 					Log-out
 				</button>
 			</div>
-		</div>
 		</div>
 	);
 }

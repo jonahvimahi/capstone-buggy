@@ -1,37 +1,43 @@
-  .dashboard__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-    background-color: gray;
-    padding: 2vh 2vw;
-    width:15vw;
-    height: 25vh;
-    box-shadow: 2px 2px 2px #05e6ee81;
-    border-radius: 8px;
-  }
-  .dashboard__btn {
-    padding: 10px;
-    font-size: 18px;
-    margin-top: 10px;
-    border: 1.5px black solid;
-    color: black;
-    background-color: white;
-    height: 8vh;
-    border-radius: 8px;
-  }
-  .dashboard__btn:hover{
-    transform: all;
-    background-color: #05e6ee;
-  }
-  .title{
-    font-weight: 1000;
-  }
-  .dashboard__container h1{
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-  }
-  .dashboard__container h2{
-    font-size: 22px;
-  }
+.dashboard-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:82vw;
+}
+.profile__card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: center;
+	background-color: gray;
+	padding: 2vh 2vw;
+	width: 20vw;
+	height: 35vh;
+	box-shadow: 2px 2px 2px #05e6ee81;
+	border-radius: 8px;
+}
+.dashboard__btn {
+	padding: 10px;
+	font-size: 18px;
+	margin-top: 10px;
+	border: 1.5px black solid;
+	color: black;
+	background-color: white;
+	height: 8vh;
+	border-radius: 8px;
+}
+.dashboard__btn:hover {
+	transform: all;
+	background-color: #05e6ee;
+}
+.title {
+	font-weight: 1000;
+}
+.dashboard__container h1 {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+}
+.dashboard__container h2 {
+	font-size: 22px;
+}

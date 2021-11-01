@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useHistory } from "react-router";
 import "./Dashboard.css";
+import "../../Reset.css"
 import { auth, db, logout } from "../../firebase";
 import Sidebar from "../Sidebar/Sidebar";
 function Dashboard(props) {
@@ -30,13 +31,15 @@ function Dashboard(props) {
 	return (
 		<>
 			<Sidebar />
-			<div className="dashboard__container">
+			<div className="dashboard-container">
+			<div className="profile__card">
 				<h1 className="title">Logged in as:</h1>
 				<h2>{name}</h2>
 				<h3>{user?.email}</h3>
 				<button className="dashboard__btn" onClick={logout}>
 					Logout
 				</button>
+			</div>
 			</div>
 		</>
 	);

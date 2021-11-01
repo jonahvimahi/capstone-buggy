@@ -9,13 +9,13 @@
 	align-items: center;
 	justify-self: flex-start;
 	justify-content: space-between;
-	position: fixed;
+	/* position: fixed; */
 	height: 100vh;
 	width: 18vw;
 	background-color: gray;
 	text-align: center;
 	padding: 3px 2px;
-	margin-right: 25vw;	
+	/* margin-left: 50vw; */
 }
 .sidebar li {
 	padding: 10px;
