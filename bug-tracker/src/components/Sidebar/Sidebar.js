@@ -12,30 +12,30 @@ export default function Sidebar() {
 			<ThemeProvider theme={Theme}>
 				<ul>
 					<h1 className="brand">Bug-Tracker</h1>
-					<Button variant="contained">
 						<Link to="/profile" className="nav-link">
+					<Button className="nav-btn" size="large" variant="contained">
 							Profile
-						</Link>
 					</Button>
-					<Button variant="contained">
+						</Link>
 						<Link to="/home" className="nav-link">
+					<Button className="nav-btn" size="large" variant="contained">
 							Home
-						</Link>
 					</Button>
-					<Button variant="contained">
+						</Link>
 						<Link to="/viewbugs" className="nav-link">
+					<Button className="nav-btn" size="large" variant="contained">
 							View Bugs
-						</Link>
 					</Button>
-					<Button variant="contained">
+						</Link>
 						<Link to="/create" className="nav-link">
+					<Button className="nav-btn" size="large" variant="contained">
 							Create Bug
-						</Link>
 					</Button>
+						</Link>
 				</ul>
 			
 			<div className="logout">
-				<Button variant="contained" onClick={logout}>
+				<Button className="nav-btn" size="large" variant="contained" onClick={logout}>
 					Log-out
 				</Button>
 			</div>

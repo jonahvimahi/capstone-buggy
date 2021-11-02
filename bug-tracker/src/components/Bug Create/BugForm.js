@@ -173,9 +173,9 @@ export default function BugForm(props) {
 									}}
 									value={bugObject.priority}
 								>
-									<MenuItem value={1}>High</MenuItem>
-									<MenuItem value={2}>Mid</MenuItem>
-									<MenuItem value={3}>Low</MenuItem>
+									<MenuItem value={1}>High Priority</MenuItem>
+									<MenuItem value={2}>Medium Priority</MenuItem>
+									<MenuItem value={3}>Low Priority</MenuItem>
 								</Select>
 								<TextField
 									variant="standard"

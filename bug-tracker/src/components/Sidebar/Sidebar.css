@@ -17,10 +17,12 @@
 	padding: 3px 2px;
 	/* margin-left: 50vw; */
 }
-.sidebar li {
-	padding: 10px;
+.nav-btn {
 	font-size: 1.5rem;
-	border-bottom: 1px groove #05e6ee;
+	width: 100%;
+}
+.nav-link {
+	width: 90%;
 }
 .sidebar li:hover {
 	transition: all 0.2s;
@@ -30,11 +32,15 @@
 	list-style: none;
 	display: flex;
 	flex-direction: column;
-
+	border-spacing: 2vh;
+	align-items: center;
+	justify-content: center;
 }
 .sidebar .nav-link {
 	text-decoration: none;
-	color: black
+	color: black;
+	margin-bottom: 2vh;
+	margin-top: 1vh;
 }
 .logout_btn {
 	margin-bottom: 2rem;

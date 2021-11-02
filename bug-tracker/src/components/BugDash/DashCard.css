@@ -8,6 +8,8 @@
     height: 20vh;
     width: 20vw;
     margin-bottom: 4vh;
+    box-shadow: 2px 2px 2px #05e6ee81;
+
 }
 .dash-card:hover{
     transition: all 0.2s;
