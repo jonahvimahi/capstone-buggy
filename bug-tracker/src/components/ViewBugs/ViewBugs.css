@@ -1,3 +1,11 @@
+.bugCard-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 82vw;
+    flex-direction: column;
+    height: 100vh;
+}
 .bug-card{
     box-shadow: 2px 2px 2px;
     text-align: center;

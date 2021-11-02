@@ -9,6 +9,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import DashCard from '../BugDash/DashCard'
 
 
+
 export default function Home() {
 	const [user, loading] = useAuthState(auth);
 	const history = useHistory();

@@ -2,6 +2,7 @@ import React, {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { getBugs } from '../Controller/Redux/BugSlice'
 import { useHistory } from 'react-router'
+import { ThemeProvider } from "@emotion/react";
 import DashCard from '../BugDash/DashCard'
 import Sidebar from '../Sidebar/Sidebar'
 
@@ -32,10 +33,12 @@ export default function Home() {
     }, [bugs === undefined])
     return(
         <>
+        <ThemeProvider>
         <Sidebar />
         <DashCard priority='1' count={highCount.length} clicked={redirect}/>
         <DashCard priority='2' count={midCount.length} clicked={redirect}/>
         <DashCard priority='3' count={lowCount.length} clicked={redirect}/>
+        </ThemeProvider>
         </>
     )
 }

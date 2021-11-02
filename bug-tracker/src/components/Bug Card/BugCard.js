@@ -1,6 +1,7 @@
 import React from "react";
 import "./BugCard.css";
 import PriorityController from "../Controller/PriorityController";
+import { Typography } from "@mui/material";
 
 export default function BugCard(props) {
 	const { name, priority, version } = props.bug;
@@ -10,9 +11,9 @@ export default function BugCard(props) {
 	}
 	return (
 				<div className="bug-card" onClick={Clicked}>
-					<h2 className="name">{name}</h2>
-					<h4 className="priority" style={{ color: color }}>{level}</h4>
-					<h5 className="version">{version}</h5>
+					<Typography className="name">{name}</Typography>
+					<Typography className="priority" style={{ color: color }}>{level}</Typography>
+					<Typography className="version">{version}</Typography>
 				</div>
 	);
 }

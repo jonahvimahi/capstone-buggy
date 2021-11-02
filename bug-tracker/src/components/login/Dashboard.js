@@ -5,6 +5,11 @@ import "./Dashboard.css";
 import "../../Reset.css"
 import { auth, db, logout } from "../../firebase";
 import Sidebar from "../Sidebar/Sidebar";
+import { ThemeProvider } from "@emotion/react";
+import { Button, Typography } from "@mui/material";
+import { Theme } from "../../theme";
+
+
 function Dashboard(props) {
 	const [user, loading] = useAuthState(auth);
 	const [name, setName] = useState("");
@@ -33,12 +38,14 @@ function Dashboard(props) {
 			<Sidebar />
 			<div className="dashboard-container">
 			<div className="profile__card">
-				<h1 className="title">Logged in as:</h1>
-				<h2>{name}</h2>
-				<h3>{user?.email}</h3>
-				<button className="dashboard__btn" onClick={logout}>
+				<ThemeProvider theme={Theme}>
+				<Typography variant="h6">Logged in as:</Typography>
+				<Typography variant="h4">{name}</Typography>
+				<Typography variant="body1">{user?.email}</Typography>
+				<Button variant="contained" onClick={logout}>
 					Logout
-				</button>
+				</Button>
+				</ThemeProvider>
 			</div>
 			</div>
 		</>

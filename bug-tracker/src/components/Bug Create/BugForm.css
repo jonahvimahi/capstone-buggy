@@ -1,5 +1,4 @@
 .bug-create{
-    /* position:absolute; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -39,5 +38,4 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 18vw;
 }

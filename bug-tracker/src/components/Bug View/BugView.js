@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import ViewSection from "./BV Component/BugViewSection";
-import { markComplete } from "../Controller/Redux/BugSlice";
 import EditPanel from "../Edit Delete/EditPanel";
 import BugForm from "../Bug Create/BugForm";
 import "./BugView.css";
+import CloseIcon from "@mui/icons-material/Close";
+import { Button, Typography } from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
+import { Theme } from "../../theme";
 
 export default function BugView(props) {
 	const [displayEdit, setDisplayEdit] = useState(false);
 	const bug = props.bug;
-	const getBugs = props.getBugs
+	const getBugs = props.getBugs;
 
 	function editClicked() {
 		setDisplayEdit(!displayEdit);
@@ -18,11 +21,19 @@ export default function BugView(props) {
 		<>
 			{!displayEdit ? (
 				<div className="bug-view">
-					<EditPanel getBugs={props.getBugs} editClicked={editClicked} bug={bug} />
-					<button className="close-button" onClick={props.clicked}>
-						Close
-					</button>
-					<h1>{bug.name}</h1>
+					<div className="edit-panel-container">
+						<EditPanel
+							getBugs={props.getBugs}
+							editClicked={editClicked}
+							bug={bug}
+						/>
+						<ThemeProvider theme={Theme}>
+						<Button size="large" className="close-button" onClick={props.clicked}>
+							{<CloseIcon />}
+						</Button>
+						</ThemeProvider>
+					</div>
+					<Typography className="bugview-title">{bug.name}</Typography>
 					<ViewSection className="bug-section-id" title="id" info={bug._id} />
 					<ViewSection
 						classname="bug-section-title"
@@ -54,17 +65,15 @@ export default function BugView(props) {
 						title="Date Created"
 						info={bug.date}
 					/>
-					<button
-						className="updateButton"
-						onClick={() => {
-							dispatchEvent(markComplete());
-						}}
-					>
-						Mark Complete
-					</button>
+
 				</div>
 			) : (
-				<BugForm title="Edit Bug" getBugs={getBugs} bug={bug} close={editClicked} />
+				<BugForm
+					title="Edit Bug"
+					getBugs={getBugs}
+					bug={bug}
+					close={editClicked}
+				/>
 			)}
 		</>
 	);

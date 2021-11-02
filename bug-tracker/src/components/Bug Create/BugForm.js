@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./BugForm.css";
 import Sidebar from "../Sidebar/Sidebar";
+import { ThemeProvider } from "@emotion/react";
+import { Theme } from "../../theme";
+import { Button, MenuItem, Select, TextField } from "@mui/material";
 
 export default function BugForm(props) {
-	const getBugs = props.getBugs
+	const getBugs = props.getBugs;
 	const [bugObject, setBugObject] = useState({
 		name: "",
 		details: "",
@@ -78,12 +81,11 @@ export default function BugForm(props) {
 			.put(`http://localhost:3500/viewbugs/?id=${props.bug._id}`, formData) // ({
 			.then((res) => {
 				console.log("Data has been sent to the server");
-				resetInputs();
+				getBugs();
 			})
 			.catch((err) => {
 				console.log(err);
 			});
-			getBugs()
 	}
 	function resetInputs() {
 		setBugObject({
@@ -100,109 +102,121 @@ export default function BugForm(props) {
 	return (
 		<>
 			{props.title !== "Edit Bug" && <Sidebar />}
-			<div className="bug-view">
-				<div className="bug-create">
-					{props.title === "Edit Bug" && (
-						<>
-							<button className="close-button" onClick={props.close}>
-								Close
-							</button>
-							<button
-								className="update-button"
-								onClick={() => {
-									updateBug();
-								}}
-							>
-								Update
-							</button>
-							<h1>{props.title}</h1>
-						</>
-					)}
-					<form>
-						<label>Title:</label>
-						<input
-							name="name"
-							placeholder="Bug Name"
-							required
-							onChange={(e) => {
-								setBugObject({ ...bugObject, name: e.target.value });
-							}}
-							value={bugObject.name}
-						/>
-						<label>Details:</label>
-						<textarea
-							name="details"
-							placeholder="Detailed description of bug"
-							onChange={(e) => {
-								setBugObject({ ...bugObject, details: e.target.value });
-							}}
-							value={bugObject.details}
-						></textarea>
-						<label>Steps:</label>
-						<textarea
-							name="steps"
-							placeholder="Steps to recreate the bug"
-							onChange={(e) => {
-								setBugObject({ ...bugObject, steps: e.target.value });
-							}}
-							value={bugObject.steps}
-						></textarea>
-						<label>Application Version:</label>
-						<input
-							name="version"
-							placeholder="Application Version"
-							onChange={(e) => {
-								setBugObject({ ...bugObject, version: e.target.value });
-							}}
-							value={bugObject.version}
-						></input>
-						<label>Priority:</label>
-						<select
-							name="priority"
-							required
-							onChange={(e) => {
-								setBugObject({ ...bugObject, priority: e.target.value });
-							}}
-							value={bugObject.priority}
-						>
-							<option value="1">High</option>
-							<option value="2">Mid</option>
-							<option value="3">Low</option>
-						</select>
-						<label>Assigned:</label>
-						<input
-							placeholder="Assigned"
-							name="assigned"
-							onChange={(e) => {
-								setBugObject({ ...bugObject, assigned: e.target.value });
-							}}
-							value={bugObject.assigned}
-						></input>
-						<label>Creator</label>
-						<input
-							placeholder="Who is reporting this bug?"
-							name="creator"
-							onChange={(e) => {
-								setBugObject({ ...bugObject, creator: e.target.value });
-							}}
-							value={bugObject.creator}
-						/>
-						<label>Date:</label>
-						<input
-							type="date"
-							className="bug-date"
-							placeholder="Bug Date"
-							onChange={(e) =>
-								setBugObject({ ...bugObject, date: e.target.value })
-							}
-							value={bugObject.date}
-						/>
-						{props.title !== "Edit Bug" && (
-							<button type="submit" onClick={submit}>
-								Submit
-							</button>
+			<div className="bugCard-container">
+				<div className="bug-view">
+					<div className="bug-create">
+						{props.title === "Edit Bug" && (
+							<>
+								<button className="close-button" onClick={props.close}>
+									Close
+								</button>
+								<button
+									className="update-button"
+									onClick={() => {
+										updateBug();
+									}}
+								>
+									Update
+								</button>
+								<h1>{props.title}</h1>
+							</>
 						)}
-					</form>
+						<ThemeProvider theme={Theme}>
+							<form>
+								<TextField
+									variant="standard"
+									name="name"
+									helperText="Title"
+									onChange={(e) => {
+										setBugObject({ ...bugObject, name: e.target.value });
+									}}
+									value={bugObject.name}
+								/>
+
+								<TextField
+									variant="standard"
+									name="details"
+									helperText="Detailed description of bug"
+									onChange={(e) => {
+										setBugObject({ ...bugObject, details: e.target.value });
+									}}
+									value={bugObject.details}
+								></TextField>
+								<TextField
+									variant="standard"
+									name="steps"
+									helperText="Steps to recreate bug"
+									onChange={(e) => {
+										setBugObject({ ...bugObject, steps: e.target.value });
+									}}
+									value={bugObject.steps}
+								></TextField>
+
+								<TextField
+									variant="standard"
+									name="version"
+									helperText="Application Version"
+									onChange={(e) => {
+										setBugObject({ ...bugObject, version: e.target.value });
+									}}
+									value={bugObject.version}
+								></TextField>
+								<Select
+									size="small"
+									label="Priority"
+									InputLabelProps={{
+										style: { fontSize: 16, color: "white" },
+										shrink: true,
+									}}
+									onChange={(e) => {
+										setBugObject({ ...bugObject, priority: e.target.value });
+									}}
+									value={bugObject.priority}
+								>
+									<MenuItem value={1}>High</MenuItem>
+									<MenuItem value={2}>Mid</MenuItem>
+									<MenuItem value={3}>Low</MenuItem>
+								</Select>
+								<TextField
+									variant="standard"
+									helperText="Assigned"
+									name="assigned"
+									onChange={(e) => {
+										setBugObject({ ...bugObject, assigned: e.target.value });
+									}}
+									value={bugObject.assigned}
+								></TextField>
+								<TextField
+									variant="standard"
+									helperText="Who is reporting this bug?"
+									name="creator"
+									onChange={(e) => {
+										setBugObject({ ...bugObject, creator: e.target.value });
+									}}
+									value={bugObject.creator}
+								/>
+
+								<TextField
+									size="small"
+									label="Date"
+									type="date"
+									InputLabelProps={{
+										style: { fontSize: 16 },
+										shrink: true,
+									}}
+									onChange={(e) =>
+										setBugObject({ ...bugObject, date: e.target.value })
+									}
+									value={bugObject.date}
+								/>
+								{props.title !== "Edit Bug" && (
+									<Button type="submit" onClick={submit}>
+										Submit
+									</Button>
+								)}
+							</form>
+						</ThemeProvider>
+					</div>
 				</div>
 			</div>
 		</>

@@ -28,10 +28,13 @@
 }
 .sidebar ul {
 	list-style: none;
+	display: flex;
+	flex-direction: column;
+
 }
 .sidebar .nav-link {
 	text-decoration: none;
-	color: white;
+	color: black
 }
 .logout_btn {
 	margin-bottom: 2rem;

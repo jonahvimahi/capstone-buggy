@@ -7,12 +7,10 @@
     background-color: gray;
     box-shadow: 2px 2px 2px #05e6ee81;
     border-radius: 8px;
-    margin: 10px;
     width: 20vw;
     height: 15vh;
-
-    /* min-width: 275px;
-    min-height: 200px; */
+    min-width: 275px;
+    min-height: 200px;
 }
 .bug-card:hover{
     transition: all 0.2s;

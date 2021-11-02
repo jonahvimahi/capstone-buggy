@@ -1,19 +1,17 @@
 .bug-view {
-    /* position: absolute; */
 	width: 60vw;
-    height: 70vh;
+    height: 78vh;
 	border: 1px solid #05e6ee;
 	box-shadow: 2px 2px rgba(0, 0, 0, 0.76);
 	border-radius: 8px;
 	background-color: gray;
-	margin: 15%;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
     align-items: center;
 }
 
-.bug-view h1{
+.bugview-title{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,15 +19,12 @@
     text-align: center;
     color: white;
     font-size: 3rem;
-    margin-top: 1rem;
     border-bottom: 1px groove #05e6ee;
 }
-.close-button{
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin-right: 2vw;
-    margin-top: 2vh;
+.edit-panel-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 .new-bug-form{
     max-width: 40vw;

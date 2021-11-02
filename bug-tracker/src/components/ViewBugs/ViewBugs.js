@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import BugCard from "../Bug Card/BugCard";
 import BugView from "../Bug View/BugView";
 import Sidebar from "../Sidebar/Sidebar";
+import "./ViewBugs.css";
 
 export default function ViewBugs() {
 	const [displayBug, setDisplayBug] = useState({
@@ -34,17 +35,19 @@ export default function ViewBugs() {
 	return (
 		<>
 			<Sidebar />
-			div.page-container
-			{holdBugs.map((bug, key) => (
-				<BugCard key={key} bug={bug} clicked={BugClicked} />
-			))}
-			{displayBug.isDisplayed && (
-				<BugView
-					getBugs={getBugs}
-					clicked={BugClicked}
-					bug={holdBugs.filter((bug) => bug.name === displayBug.name)[0]}
-				/>
-			)}
+
+			<div className="bugCard-container">
+				{ !displayBug.isDisplayed ? holdBugs.map((bug, key) => (
+					<BugCard key={key} bug={bug} clicked={BugClicked} />
+				)): null}
+				{displayBug.isDisplayed && (
+					<BugView
+						getBugs={getBugs}
+						clicked={BugClicked}
+						bug={holdBugs.filter((bug) => bug.name === displayBug.name)[0]}
+					/>
+				)}
+			</div>
 		</>
 	);
 }

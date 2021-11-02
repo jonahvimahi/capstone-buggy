@@ -2,6 +2,11 @@ import React from "react";
 import "./EditPanel.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import { Button } from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
+import { Theme } from "../../theme";
 
 export default function EditBug(props) {
 	function deleteClicked() {
@@ -19,8 +24,10 @@ export default function EditBug(props) {
 
 	return (
 		<div className="edit-panel">
-			<button onClick={props.editClicked}>Edit</button>
-			<button onClick={() => deleteClicked()}><Link to='/home'>Delete </Link></button>
+			<ThemeProvider theme={Theme}>
+			<Button startIcon={<EditIcon/>} onClick={props.editClicked}>Edit</Button>
+			<Button startIcon={<DeleteIcon />} onClick={() => deleteClicked()}><Link className="delete-btn" to='/home'>Delete</Link></Button>
+			</ThemeProvider>
 		</div>
 	);
 }

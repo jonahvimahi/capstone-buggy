@@ -2,37 +2,44 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { logout } from "../../firebase";
 import "./Sidebar.css";
+import { Button } from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
+import { Theme } from "../../theme";
+
 export default function Sidebar() {
 	return (
 		<div className="sidebar">
-			<ul>
-			<h1 className="brand">Bug-Tracker</h1>
-				<li>
-					<Link to="/profile" className="nav-link">
-						Profile
-					</Link>
-				</li>
-				<li>
-					<Link to="/home" className="nav-link">
-						Home
-					</Link>
-				</li>
-				<li>
-					<Link to="/viewbugs" className="nav-link">
-						View Bugs
-					</Link>
-				</li>
-				<li>
-					<Link to="/create" className="nav-link">
-						Create Bug
-					</Link>
-				</li>
-			</ul>
+			<ThemeProvider theme={Theme}>
+				<ul>
+					<h1 className="brand">Bug-Tracker</h1>
+					<Button variant="contained">
+						<Link to="/profile" className="nav-link">
+							Profile
+						</Link>
+					</Button>
+					<Button variant="contained">
+						<Link to="/home" className="nav-link">
+							Home
+						</Link>
+					</Button>
+					<Button variant="contained">
+						<Link to="/viewbugs" className="nav-link">
+							View Bugs
+						</Link>
+					</Button>
+					<Button variant="contained">
+						<Link to="/create" className="nav-link">
+							Create Bug
+						</Link>
+					</Button>
+				</ul>
+			
 			<div className="logout">
-				<button className="logout_btn" onClick={logout}>
+				<Button variant="contained" onClick={logout}>
 					Log-out
-				</button>
+				</Button>
 			</div>
+			</ThemeProvider>
 		</div>
 	);
 }

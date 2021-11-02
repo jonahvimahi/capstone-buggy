@@ -1,7 +1,7 @@
 .edit-panel{
-    position: absolute;
-    left: 0;
-    top: 0;
-    margin-left: 2vw;
-    margin-top: 2vh;
+margin-left: 2vw;
+}
+.delete-btn{
+    text-decoration: none;
+    color: #00e6ee
 }

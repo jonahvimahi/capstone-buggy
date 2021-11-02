@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
     border-radius: 8px;
     background-color: gray;
     height: 20vh;
