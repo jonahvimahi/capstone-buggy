@@ -33,7 +33,7 @@ export default function BugView(props) {
 						</Button>
 						</ThemeProvider>
 					</div>
-					<Typography className="bugview-title">{bug.name}</Typography>
+					<Typography variant="h3" className="bugview-title">{bug.name}</Typography>
 					<ViewSection className="bug-section-id" title="id" info={bug._id} />
 					<ViewSection
 						classname="bug-section-title"

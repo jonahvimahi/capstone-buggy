@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./BugForm.css";
 import Sidebar from "../Sidebar/Sidebar";
+import CloseIcon from "@mui/icons-material/Close";
 import { ThemeProvider } from "@emotion/react";
 import { Theme } from "../../theme";
-import { Button, MenuItem, Select, TextField } from "@mui/material";
+import { Button, MenuItem, Select, TextField, Typography } from "@mui/material";
 
 export default function BugForm(props) {
 	const getBugs = props.getBugs;
@@ -107,23 +108,28 @@ export default function BugForm(props) {
 					<div className="bug-create">
 						{props.title === "Edit Bug" && (
 							<>
-								<button className="close-button" onClick={props.close}>
-									Close
-								</button>
-								<button
-									className="update-button"
-									onClick={() => {
-										updateBug();
-									}}
-								>
-									Update
-								</button>
-								<h1>{props.title}</h1>
+								<ThemeProvider theme={Theme}>
+									<div className="edit-panel">
+									<div className="edit-close">
+										<Button
+											size="large"
+											className="close-button"
+											onClick={props.close}
+										>
+											{<CloseIcon />}
+										</Button>
+									</div>
+									<div className="edit-title">
+									<Typography variant="h3">{props.title}</Typography>
+									</div>
+									</div>
+								</ThemeProvider>
 							</>
 						)}
 						<ThemeProvider theme={Theme}>
 							<form>
 								<TextField
+									autoComplete="off"
 									variant="standard"
 									name="name"
 									helperText="Title"
@@ -134,6 +140,7 @@ export default function BugForm(props) {
 								/>
 
 								<TextField
+									autoComplete="off"
 									variant="standard"
 									name="details"
 									helperText="Detailed description of bug"
@@ -143,6 +150,7 @@ export default function BugForm(props) {
 									value={bugObject.details}
 								></TextField>
 								<TextField
+									autoComplete="off"
 									variant="standard"
 									name="steps"
 									helperText="Steps to recreate bug"
@@ -153,6 +161,7 @@ export default function BugForm(props) {
 								></TextField>
 
 								<TextField
+									autoComplete="off"
 									variant="standard"
 									name="version"
 									helperText="Application Version"
@@ -178,6 +187,7 @@ export default function BugForm(props) {
 									<MenuItem value={3}>Low Priority</MenuItem>
 								</Select>
 								<TextField
+									autoComplete="off"
 									variant="standard"
 									helperText="Assigned"
 									name="assigned"
@@ -187,6 +197,7 @@ export default function BugForm(props) {
 									value={bugObject.assigned}
 								></TextField>
 								<TextField
+									autoComplete="off"
 									variant="standard"
 									helperText="Who is reporting this bug?"
 									name="creator"
@@ -197,6 +208,7 @@ export default function BugForm(props) {
 								/>
 
 								<TextField
+									autoComplete="off"
 									size="small"
 									label="Date"
 									type="date"
@@ -213,6 +225,19 @@ export default function BugForm(props) {
 									<Button type="submit" onClick={submit}>
 										Submit
 									</Button>
+								)}
+								{props.title === "Edit Bug" && (
+									<>
+											<Button
+												size="large"
+												className="update-button"
+												onClick={() => {
+													updateBug();
+												}}
+											>
+												Update
+											</Button>
+									</>
 								)}
 							</form>
 						</ThemeProvider>
