@@ -24,3 +24,4 @@ front-end-bug-tracker/.env.production.local
 front-end-bug-tracker/npm-debug.log*
 front-end-bug-tracker/yarn-debug.log*
 front-end-bug-tracker/yarn-error.log*
+# this is a bad commit comment
